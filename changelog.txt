@@ -1,0 +1,10 @@
+# Updated demos which numbers are 15,16,17,18. Newly updated demos have the same styles and scripts.
+# The followings are the main features distinguished from previous demos.
+
++ Added print_css mixin to core.scss.
++ Updated code using css mixin to use print_css.
++ Updated appearAnimate to use custom animate.js.
++ Fixed the sticky-header margin when modal appear.
+- Removed code which set false value in set-default mixin.
+- Removed code which invoke css mixin with false value.
+- Removed _set, _set-default, set, set-default function.
