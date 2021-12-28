@@ -1,0 +1,79 @@
+.footer {
+    font-family: "Open Sans", sans-serif;
+
+    .product-default {
+        .product-title {
+            margin-bottom: .9rem;
+            font-family: "Open Sans", sans-serif;
+            line-height: 1;
+        }
+    }
+
+    .footer-logo {
+        margin-bottom: 1.7rem;
+    }
+
+    .price-box {
+        font-family: "Open Sans", sans-serif;   
+    }
+
+    .mr-2.icon-twitter {
+        text-indent: 1px;
+    }
+    
+    .social-icons {
+        margin: 1.2rem 0 4.2rem .2rem;
+    }
+
+    .ratings-container .product-ratings:before {
+        color: #ddd;
+    }
+
+    .product-widget {
+        margin-bottom: 1.8rem;
+        padding-top: .2rem;
+
+        .product-price {
+            font-size: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+        }
+
+        .ratings-container {
+            margin-bottom: 1.4rem;
+        }
+    }
+
+    .twitter-feed-content {
+        p {
+            margin: -.1rem 0 0 .2rem;
+            line-height: 2;
+        }
+
+        .meta {
+            font-size: 11.7px;
+            opacity: .5;
+        }
+
+        i {
+            font-size: 2.3rem;
+        }
+    }
+}
+
+.footer .contact-info {
+    li {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 1em;
+        margin-bottom: 1.4rem;
+        line-height: 1.3;
+    }
+
+    .contact-info-label {
+        margin-bottom: 4px;
+        line-height: 1;
+    }
+}

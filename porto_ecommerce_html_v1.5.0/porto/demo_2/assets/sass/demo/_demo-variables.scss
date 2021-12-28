@@ -1,0 +1,111 @@
+// Variables
+
+// # Contents
+// 1. Theme Skin
+// 2. Theme Settings
+// 3. Theme Variables
+// 4. Plugin Variables
+
+// 1. Theme Skin
+
+$primary-color: #e1ddc3;
+$secondary-color: #61605a;
+$link-color: #3c4250;
+$border-radius: 0;
+$font-family: Poppins, sans-serif;
+$third-font-family: 'Open Sans', sans-serif;
+
+// 3. Theme Variables
+@include set(
+    (
+        header: (
+            color: #fff,
+
+            top: (
+                font-size: 1.2rem
+            ),
+
+            middle: (
+                padding-top: 2.8rem,
+                padding-bottom: 2.8rem,
+            ),
+
+            search: (
+                toggle: (
+                    size: 21px,
+                    weight: 600
+                ),
+                btn: (
+                    size: 2.4rem,
+                    color: #fff,
+                    min-width: 63px
+                ),
+                border: (
+                    width: 0,
+                    color: $primary-color-dark
+                )
+            ),
+
+            dropdown: (
+                font: (
+                    weight: 500
+                ),
+
+                item: (
+                    active-background: $primary-color
+                )
+            ),
+
+            icon: (
+                space: 0
+            )
+        ),
+
+        footer: (
+            link-active-color: $primary-color,
+
+            social-icon: (
+                color: #fff,
+                size: 1.7rem
+            ),
+
+            widget: (
+                title: (
+                    weight: 700,
+                )
+            )
+        ),
+
+
+        breadcrumb: (
+            color: #323232,
+            border-bottom: 1px solid #e7e7e7,
+            padding: 1.5rem,
+
+            font: (
+                size: 10px,
+                weight: 600
+            ),
+
+            divider: (
+                weight: 400,
+            )
+        ),
+
+        page-header: (
+            color: #fff,
+        ),
+
+        category: (
+            sidebar: (
+                title: (
+                    font-size: 12px
+                )
+            )
+        )
+    )
+);
+
+// 4. Plugin Variables
+
+$nav-font-size: 3.4rem;

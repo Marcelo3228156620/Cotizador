@@ -1,0 +1,622 @@
+// Home
+
+// 1. Header & Footer
+
+// 1.1) Header
+
+.header-middle a.header-icon {
+	padding-bottom: 2px;
+}
+
+.header-search-wrapper {
+	box-shadow: 0 5px 8px rgba(0,0,0,0.15);
+}
+
+// Header Dropdown's border
+.header-dropdown {
+	.dropdown-toggle:after {
+		font-size: 17px;
+	}
+
+	&:not(.dropdown-expanded) {
+		ul {
+			border: 1px solid #ccc;
+		}
+
+		.header-menu:before {
+			border-bottom-color: #ccc;
+		}
+
+		.header-menu:after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			width: 0;
+			height: 0;
+			margin-left: -9px;
+			border-width: 0 9px 10px;
+			border-style: solid;
+			border-color: transparent transparent #fff;
+			margin-top: 2px;
+			z-index: 1151;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-2rem);
+		}
+
+		&:hover .header-menu:after {
+			top: 100%;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(-1rem);
+		}
+	}
+}
+
+// 1.2) Footer
+
+.footer .read-more {
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.footer p {
+	line-height: 20px;
+}
+
+// 2. Components
+
+// 2.1) Owl Carousel - Height 100%
+.owl-carousel.h-100 {
+	.owl-stage-outer,
+	.owl-stage,
+	.owl-item {
+		height: inherit;
+	}
+}
+
+// 2.2) Coupon Sale Text
+.coupon-sale-text {
+	position: relative;
+	display: inline-block;
+	padding: 5px 8px;
+	transform: rotate(-2deg);
+
+	i {
+		position: absolute;
+		left: -2.25em;
+		top: 50%;
+		transform: translateY(-50%) rotate(-90deg);
+		font-size: .65em;
+		font-style: normal;
+		opacity: .6;
+		letter-spacing: 0;
+	}
+
+	b {
+		display: inline-block;
+		padding: 5px 8px;
+		font-size: 1.6em;
+		background-color: #fff;
+	}
+
+	em {
+		font-size: 2em;
+		font-style: normal;
+		vertical-align: text-top;
+
+		@include only_for_ie() {
+			vertical-align: middle;
+		}
+	}
+}
+
+// 2.3) Section Sub Title
+.section-sub-title {
+	font-size: 1.4rem;
+}
+
+// 3. Home Page
+// 3.1) Home Slides & Category Banner
+.home-slider {
+
+	.slide-bg {
+		min-height: 375px;
+	}
+
+	.banner-layer {
+		left: 5%;
+	}
+
+	&.owl-carousel .owl-dots .owl-dot span {
+		border-color: #fff;
+	}
+
+	.owl-dots {
+		position: absolute;
+		bottom: 37px;
+		left: 5%;
+
+		.owl-dot {
+			span {
+				width: 14px;
+				height: 14px;
+			}
+
+			&:hover,
+			&.active {
+				span:before {
+					width: 4px;
+					height: 4px;
+					margin-left: -2px;
+					margin-top: -2px;
+					background: #fff;
+					opacity: 1;
+					visibility: visible;
+					transform: scale(1);
+				}
+			}
+		}
+	}
+}
+
+.home-slider,
+.category-banner {
+	h4 {
+		color: #777;
+		font-size: 1em;
+		font-weight:500;
+		letter-spacing: .08em;
+		opacity: .7;
+	}
+
+	h5 {
+		font-size: .875em;
+		margin-top: -4px;
+
+		b {
+			font-size: 0.93em;
+		}
+	}
+	
+	.btn {
+		font-size: .8125em;
+		padding: 1em 2.84em;
+	}
+}
+
+.category-banner {
+	.slide-bg {
+		min-height: 300px;
+	}
+
+	.container .banner-layer {
+		font-size: 1.2em;
+	}
+}
+
+.home-slide1 {
+	background: #495C6D;
+
+	h4 {
+		font-size: .9625em;
+		margin-bottom: 14px;
+	}
+
+	h2 {
+		font-size: 2.695em;
+		letter-spacing: .005em;
+		font-family: 'Segoe Script','Savoye LET';
+	}
+
+	h3 {
+		font-size: 4.75em;
+	}
+
+	h5 {
+		font-size: .6875em;
+		font-weight: 600;
+	}
+
+	.coupon-sale-text {
+		padding: 4px 8px;
+		margin: 0 .2em 0 1.1em;
+		font-size: 1.09em;
+	}
+}
+
+.home-slide2 {
+	background: #EE3D43;
+
+	.slide-bg {
+		background-position: 70%;
+	}
+
+	h2 {
+		font-size: 3.4375em;
+	}
+	
+	em {
+		display: inline-block;
+		margin-top: -2px;
+		font-size: 2em;
+		font-style: normal;
+		vertical-align: text-top;
+	}
+}
+
+// 3.2) Top Banners
+.top-banners {
+	h4 {
+		font-size: 0.875em;
+		font-weight: 600;
+	}
+
+	.banner-layer {
+		left: 8%;
+		right: 8%;
+	}
+
+	a {
+		font-size: .75em;
+		font-weight: 700;
+		font-family: $second-font-family;
+	}
+
+	.banner:hover {
+		box-shadow: 0 0 25px 0 rgba(0, 0, 0, .08);
+	}
+}
+
+.banner1 {
+	h3 {
+		font-size: 1.4em;
+	}
+
+	h4 {
+		font-size: .9375em;
+	}
+}
+
+.banner2 {
+	h3 {
+		font-size: 1.125em;
+		letter-spacing: -.035em;
+	}
+}
+
+.banner3 {
+	h3 {
+		font-size: 1.35em;
+	}
+}
+
+// 3.3) Info boxes container
+.info-boxes-container {
+	.info-box {
+		padding: 1.8rem 1rem;
+	}
+
+	p {
+		opacity: .6;
+		font-weight: 300;
+		letter-spacing: 0;
+	}
+}
+
+// 3.4) Home Products Tabs
+.home-product-tabs {
+	margin-top: -1rem;
+
+	.nav-tabs {
+		border-bottom: 2px solid #eee;
+	}
+
+	.nav-item {
+		.nav-link {
+			line-height: 1.429;
+			letter-spacing: -.025em;
+		}
+
+		&.show .nav-link,
+		&:hover .nav-link,
+		.nav-link.active {
+			color: $secondary-color;
+			border-color: $secondary-color;
+		}
+
+		&:last-child {
+			margin-right: 3rem;
+		}
+	}
+
+	.product-title {
+		font-family: $second-font-family;
+		letter-spacing: -.01em;
+	}
+}
+
+// 3.5) Banners Group
+.banners-group .btn {
+	font-size: 1.1em;
+}
+
+.banner-layer-img {
+	max-height: 100%;
+	width: auto;
+}
+
+.banner4 {
+	h3 {
+		color: #ff7272;
+		font-size: 1.0625em;
+	}
+
+	h5 {
+		color: #a2a2a2;
+		font-size: .9375em;
+		font-weight: 500;
+	}
+
+	h4 {
+		font-size: 1.375em;
+	}
+}
+
+.banner5 {
+	h3 {
+		font-size: 1.5625em;
+		font-family: 'Segoe Script','Savoye LET';
+	}
+
+	h4 {
+		font-size: 2.0625em;
+	}
+}
+
+// 3.6) Product Widgets
+.product-widgets {
+	.product-title {
+		font-size: 1.4rem;
+	}
+
+	.ratings-container {
+		margin-bottom: 1rem;
+	}
+}
+
+// 3.7) Sidebar Home
+.sidebar-home {
+	font-size: $sidebar-font-size;
+
+	.widget {
+		margin-bottom: 3rem;
+	}
+
+	.owl-dots .owl-dot span {
+		border-color: #e7e7e7;
+	}
+
+	p {
+		line-height: 24px;
+	}
+}
+
+aside .widget-title,
+.side-menu-title {
+	color: #313131;
+}
+
+// 3.8) Sidebar / Banner
+.widget-banners {
+	border: 1px solid #dae2e6;
+
+	.sale-text {
+		font-size: 7rem;
+		position: relative;
+
+		sup {
+			font-size: 60%;
+			font-weight: 600;
+		}
+
+		sub {
+			font-family: 'Oswald';
+			font-size: 20px;
+			font-weight: 400;
+			position: absolute;
+			right: 4px;
+			bottom: 3px;
+			line-height: 1.4em;
+		}
+	}
+
+	p {
+		font-size: .875em;
+		max-width: 100%;
+	}
+
+	.owl-carousel .disabled + .owl-dots {
+		margin: 1.8rem 0 2.4rem;
+	}
+
+	.owl-dots .owl-dot.active span,
+	.owl-dots .owl-dot:hover span {
+		border-color: $secondary-color;
+
+		&:before {
+			background: $secondary-color;
+		}
+	}
+}
+
+// 3.9) Sidebar / Banner / Sale Badge
+.badge-sale {
+	width: 11.3rem;
+	height: 11.3rem;
+	margin-top: 2.5rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	color: rgba(255,255,255,.8);
+	border-radius: 50%;
+	letter-spacing: .05em;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		width: 1px;
+		height: 2.5rem;
+		background: #dae2e6;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 3.2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		border-radius: 50%;
+		width: 10px;
+		height: 10px;
+		background: #fff;
+	}
+
+	em {
+		display: block;
+		color: #fff;
+		font-size: 2.9rem;
+		font-style: normal;
+		font-weight: 800;
+	}
+}
+
+// 3.10) Sidebar / Newsletter
+.widget-newsletters {
+	padding: 3rem 2.4rem 3.6rem;
+	
+	.widget-title {
+		font-size: 1.5rem;
+	}
+
+	.form-group:before {
+		position: absolute;
+		left: 1.6rem;
+		top: 1.6rem;
+		color: $primary-color-dark;
+		font-size: 1.5rem;
+	}
+	
+	.form-control {
+		border-radius: 5rem;
+		height: auto;
+		padding: 1.2rem;
+		padding-left: 4rem;
+		font-size: inherit;
+		color: inherit;
+		line-height: inherit;
+		border: 0;
+	
+		&:focus + label {
+			opacity: 0;
+		}
+	
+		&:not(:focus) {
+			border-color: #e4e4e4;
+		}
+
+		&::placeholder {
+			color: #a8a8a8;
+		}
+	}
+}
+
+// 3.11) Sidebar / Testimonial
+.widget-testimonials {
+	border: 3px solid $secondary-color;
+
+	.testimonial {
+		padding: 2.3rem 2.3rem 0;
+	}
+
+	.testimonial-owner span {
+		text-transform: none;
+	}
+	
+	img {
+		border-radius: 50%;
+	}
+
+	figure {
+		max-width: 55px;
+		margin-right: 1.2rem;
+	}
+
+	.testimonial-title {
+		margin: 0;
+		font-size: 1.6rem;
+		font-family: $font-family;
+		text-transform: capitalize;
+	}
+
+	blockquote:before {
+		left: -.3em;
+		color: $primary-color-dark;
+		font-size: 5.4rem;
+	}
+
+	&.widget .owl-carousel .owl-dots {
+		margin: 1.2rem 0 3.5rem 5.7rem;
+	}
+}
+
+// 3.12) Sidebar / Posts
+.widget-posts {
+	.post,
+	p {
+		margin: 0;
+	}
+
+	.read-more {
+		float: none;
+		color: $primary-color-dark;
+		font-size: 12px;
+		font-weight: 600;
+
+		i {
+			font-size: 9px;
+		}
+	}
+}
+
+// 4. Responsive
+@media (min-width: 992px) and (max-width: 1199px) {
+	.main-nav .menu > li > a {
+		padding-left: 1.4rem;
+		padding-right: 1.4rem;
+	}
+}
+
+@include mq(lg) {
+	// Sticky Header
+	.header-middle .header-search-inline .header-search-wrapper {
+		box-shadow: none;
+	}
+
+	.sticky-header .header-search-wrapper {
+		border-width: 0;
+	}
+}
+
+@include mq(md) {
+	.w-md-44 {
+		flex: 0 0 44.44%;
+		max-width: 44.44%;
+	}
+	.w-md-55 {
+		flex: 0 0 55.55%;
+		max-width: 55.55%;
+	}
+}

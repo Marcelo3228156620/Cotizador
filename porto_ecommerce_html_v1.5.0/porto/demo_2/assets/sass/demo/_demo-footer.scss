@@ -1,0 +1,132 @@
+// Footer
+
+.footer {
+	padding-top: 3rem;
+
+	.widget-title {
+		margin-bottom: 2.7rem;
+		color: #fff;
+	}
+
+	.links {
+		margin-bottom: 0;
+
+		li {
+			position: relative;
+			margin-bottom: 2.2rem;
+			padding-left: 1.3rem;
+
+		}
+
+		li:before {
+			position: absolute;
+			top: 2px;
+			left: 1px;
+			color: #fff;
+			font-family: 'porto';
+			font-size: 1.2rem;
+			content: '\e814';
+		}
+	}
+
+	.contact-info {
+		li {
+			position: relative;
+			margin-bottom: 2.4rem;
+			padding-left: 6.4rem;
+			line-height: 1.6;
+	
+			&:not(:last-child) {
+				padding-bottom: 2.4rem;
+				border-bottom: 1px solid #2c2f33;
+			}
+	
+			i {
+				position: absolute;
+				left: 2rem;
+				width: auto;
+				height: 4rem;
+				float: none;
+				background-color: transparent;
+				font-size: 2.6rem;
+			}
+		}
+	}
+}
+
+.footer-middle {
+	padding: 2rem 0 2.5rem;
+}
+
+.contact-info-label {
+	display: block;
+	color: #fff;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.widget-newsletter {
+	p {
+		line-height: 2;
+		letter-spacing: .005em;
+	}
+
+	form {
+		position: relative;
+		max-width: 290px;
+	}
+
+	.form-control {
+		height: 4.8rem;
+		padding: 1.35rem 7rem 1.35rem 2rem;
+		border: 0;
+		background-color: #2C2F33;
+		color: #fff;
+		font-size: 1.1rem;
+		font-weight: 600;
+		font-style: italic;
+		letter-spacing: .01em;
+	}
+
+	.form-control::placeholder {
+		font-family: $second-font-family;
+		color: rgba(255, 255, 255, .3);
+	}
+
+	.btn {
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 50px;
+		padding: 1.6rem 1rem;
+		background-color: transparent;
+		color: #fff;
+		font-size: 1.4rem;
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: .01em;
+	}
+}
+
+.footer-bottom {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	border-top: 1px solid #2c2f33;
+}
+
+.footer-copyright {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
+
+@include mq(lg) {
+	.footer {
+		padding-top: 3.6rem;
+	}
+
+	.footer-middle {
+		padding-top: 3.4rem;
+		padding-bottom: .4rem;
+	}
+}

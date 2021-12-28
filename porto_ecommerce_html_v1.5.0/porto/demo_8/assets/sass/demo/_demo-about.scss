@@ -1,0 +1,143 @@
+// About
+.page-header {
+	background: #495c6e;
+	padding: 12rem 0 11.7rem;
+
+	h1 {
+		font-family: Oswald;
+		font-weight: 600;
+		font-size: 4.5rem;
+		line-height: 1;
+	}
+}
+
+.subtitle {
+	font-family:Oswald;
+	font-size:1.6rem;
+	line-height: 1.5625;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+.about-section {
+	padding: 3.5rem 0 3rem;
+	font-size: 1.5rem;
+	line-height: 2;
+
+	.col-lg-7 {
+		p {
+			padding-right: 2rem;
+
+			&:last-child {
+				margin-bottom: 3rem;
+			}
+		}
+	}
+}
+
+.testimonials-slider {
+	color: #62615e;
+
+	figure {
+		max-width: 25px;
+	}
+
+	h4 {
+		padding-top: 0;
+		margin-bottom: 2px;
+		line-height: 1.2;
+		color:#2b2b2d;
+		font-size: 1.5rem;
+	}
+
+	span {
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	blockquote {
+		padding: 4rem 6.4rem 4rem 7.2rem;
+		margin-bottom: 0;
+		padding-bottom: 0;
+		font-size: 1.4rem;
+		line-height: 24px;
+
+		&:before {
+			color: $secondary-color;
+			left: auto;
+			top: auto;
+			margin-left: -.7em;
+			margin-top: -.5em;
+		}
+	}
+
+	&.owl-theme .owl-nav.disabled + .owl-dots {
+		margin-top: 0;
+	}
+}
+
+.gallery-section {
+	padding: 5.5rem 0 4rem;
+	background-color: #f1f1f1;
+}
+
+.gallery-item {
+	display: block;
+	margin-bottom: 1.5rem;
+
+	img {
+		max-width: none;
+		width: 100%;
+	}
+}
+
+.company-section {
+	padding: 6rem 0 3rem;
+	font-size: 1.5rem;
+	line-height: 1.8;
+
+	img {
+		margin-bottom: 3rem;
+	}
+
+	p + .subtitle {
+		margin-top: 4rem;
+	}
+}
+
+.features-section {
+	padding: 4.5rem 0 1rem;
+	background-color: #f1f1f1;
+
+	.info-box {
+		padding: 2.5rem 0;
+	}
+
+	i {
+		color: $secondary-color;
+		font-size: 5rem;
+	}
+
+	h4 {
+		color: #21293c;
+		font-family: Oswald;
+		font-weight: 700;
+		margin-bottom: 5px;
+	}
+
+	p {
+		color: #7b858a;
+		font-size: 1.5rem;
+		line-height: 1.8;
+	}
+}
+
+@include mq(md) {
+	.gallery-item {
+		margin-bottom: 2rem;
+	}
+
+	.features-section {
+		padding-top: 5.8rem;
+		padding-bottom: 2.2rem;
+	}
+}
