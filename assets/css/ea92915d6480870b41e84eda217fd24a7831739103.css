@@ -2657,7 +2657,8 @@ fieldset:disabled a.btn {
 .btn-danger:disabled {
  color:#fff;
  background-color:#dc3545;
- border-color:#dc3545
+ border-color:#dc3545;
+ cursor: not-allowed
 }
 .btn-danger:not(:disabled):not(.disabled).active,
 .btn-danger:not(:disabled):not(.disabled):active,
@@ -10241,8 +10242,10 @@ a:focus {
  color:#7b858a;
  font-size:1.5rem;
  line-height:2;
- margin-bottom:4rem
+ margin-bottom:4rem;
+ padding: 2rem 3rem
 }
+
 .feature-box i {
  display:inline-block;
  margin-bottom:2.2rem;
@@ -10886,9 +10889,9 @@ form h2 {
  margin-bottom:.9rem
 }
 .form-control {
- /*height:6rem;*/
+ height:4rem;
  margin-bottom:1rem;
- padding:2rem;
+ /*padding:2rem;*/
  transition:all .3s;
  border:1px solid #dfdfdf;
  border-radius:10px;
@@ -17689,7 +17692,7 @@ tbody .product-col {
 }
 .checkout-progress-bar li.active:before,
 .checkout-progress-bar li.active > span:before {
- background-color:#ff5501
+ background-color:#b60723
 }
 .checkout-progress-bar li.active > span {
  color:#000
@@ -17768,7 +17771,7 @@ tbody .product-col {
  word-wrap:break-word
 }
 .shipping-address-box.active {
- border-color:#ff5501
+ border-color:#b60723
 }
 .shipping-address-box.active:after {
  position:absolute;
@@ -17777,7 +17780,7 @@ tbody .product-col {
  width:2.7rem;
  height:2.7rem;
  padding-top:.2rem;
- background-color:#ff5501;
+ background-color:#b60723;
  color:#fff;
  font-family:'porto';
  font-size:1.9rem;

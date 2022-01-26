@@ -4,11 +4,11 @@ class Database extends PDO
 {
 	//Definicion de atributos de la clase
 	private $driver	='mysql';
-	private $host = 'localhost:3306';
-	private $dbName = 'fenusas_formuser';
+	private $host = 'localhost';
+	private $dbName = 'cotizadorpr';
 	private $charset = 'utf8';
-	private $user = 'fenusas_fenusas';
-	private $password = 'UsUaRiOsIsTeMaS2021_FeNuSaS';
+	private $user = 'root';
+	private $password = '';
 
 	public function __construct()
 	{

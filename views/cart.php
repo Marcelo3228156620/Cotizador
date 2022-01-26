@@ -14,27 +14,22 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="?controller=producto"><i class="icon-home"></i></a></li>
                     <li class="breadcrumb-item active" aria-current="page">Cotización</li>
                 </ol>
             </div><!-- End .container -->
         </nav>
 
         <div class="container">
-            <?php if (empty($carrito)) : ?>
-                <div class="text-center">
-                    <div class="feature-box px-sm-5 feature-box-simple text-center">
-                        <i class="icon-shopping-cart"></i>
-                        <div class="feature-box-content">
-                            <h3>El cotizador se encuentra vacio</h3>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="text-center">
-                    <a class="btn btn-outline-secondary btn-clear-cart" href="?controller=producto">Volver al Menu</a>
-                </div>
-            <?php else : ?>
+            <?php if (!empty($carrito)) : ?>
+                <ul class="checkout-progress-bar">
+                    <li class="active">
+                        <span>Carrito</span>
+                    </li>
+                    <li>
+                        <span>Cotización</span>
+                    </li>
+                </ul>
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="cart-table-container">
@@ -52,12 +47,12 @@
                                             <tr class="product-row">
                                                 <td class="product-col">
                                                     <figure class="product-image-container">
-                                                        <a href="product.html" class="product-image">
+                                                        <a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>" class="product-image">
                                                             <img src="<?php echo $producto->ubicacion ?>" alt="product">
                                                         </a>
                                                     </figure>
                                                     <h4 class="product-title">
-                                                        <a href="product.html"><?php echo $producto->nombre ?></a>
+                                                        <a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>"><?php echo $producto->nombre ?> - <?php echo $producto->nfiltro ?></a>
                                                     </h4>
                                                 </td>
                                                 <td>
@@ -86,19 +81,19 @@
                                             </tr>
                                         <?php endforeach ?>
                                     <?php endforeach ?>
-                                <!--<tr class="product-action-row">
+                                    <!--<tr class="product-action-row">
 										<td colspan="4" class="clearfix">
 											<div class="float-left">
 												<a href="#" class="btn-move">Move to Wishlist</a>
 											</div>-->
-                                <!-- End .float-left -->
+                                    <!-- End .float-left -->
 
-                                <!--<div class="float-right">
+                                    <!--<div class="float-right">
 												<a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
 												<a href="#" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
 											</div>-->
-                                <!-- End .float-right -->
-                                <!--</td>
+                                    <!-- End .float-right -->
+                                    <!--</td>
 									</tr>-->
                                 </tbody>
 
@@ -201,7 +196,45 @@
                         </div><!-- End .cart-summary -->
                     </div><!-- End .col-lg-4 -->
                 </div><!-- End .row -->
-            <?php endif ?>
+            <?php elseif (isset($_REQUEST['cotizacionId']) && !empty($_REQUEST['cotizacionId'])) : ?>
+                    <ul class="checkout-progress-bar">
+                        <li>
+                            <span>Carrito</span>
+                        </li>
+                        <li class="active">
+                            <span>Cotización</span>
+                        </li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 text-center">
+                            <div class="feature-box bg-gray">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="feature-box-content">
+                                    <!--<span>Gracias. Su cotización ha sido recibida <br> Su cotización es la numero: </span>-->
+                                    <!--<p>Gracias <br> Su cotización ha sido recibida <br> Cotización numero: </p>-->
+                                    <!--<h3>Gracias <br> <p>Su cotización ha sido recibida</p>  <br><br> Cotización numero: <span style="color:#cc0033"><?php echo $_REQUEST['cotizacionId'] ?></span></h3>-->
+                                    <h3>Gracias</h3>
+                                    <h5>Su cotización ha sido recibida<br> Cotización numero: <span style="color:#cc0033"><?php echo $_REQUEST['cotizacionId'] ?></span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                <?php  else : ?>
+                    <div class="text-center">
+                    <div class="feature-box px-sm-5 feature-box-simple text-center">
+                        <i class="icon-shopping-cart"></i>
+                        <div class="feature-box-content">
+                            <h3>El cotizador se encuentra vacio</h3>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-center">
+                    <a class="btn btn-outline-secondary btn-clear-cart" href="?controller=producto">Volver al Menu</a>
+                </div>
+        <?php endif ?>
         </div><!-- End .container -->
 
         <div class="mb-6"></div><!-- margin -->

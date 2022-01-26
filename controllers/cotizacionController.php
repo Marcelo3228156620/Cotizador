@@ -3,6 +3,7 @@
 require 'models/cotizacion.php';
 require 'models/exportar.php';
 require 'models/detalleco.php';
+require 'models/productoSistema.php';
 require 'carrito.php';
 
 class cotizacionController
@@ -18,6 +19,7 @@ class cotizacionController
         $this->detallecoModel = new Detalleco;
         $this->cotizacionModel = new Cotizacion;
         $this->exportarModel = new Exportar;
+        $this->prdtsistemasModel = new productoSistema;
     }
 
     public function admin()
@@ -37,20 +39,21 @@ class cotizacionController
         try {
             if (isset($_REQUEST['clientId'])) {
                 $cliente_id = $_REQUEST['clientId'];
-                //$consecutivo = $this->cotizacionModel->maxRegister();
                 $fecha = date('Y-m-d H:i:s');
                 $cotiza = array("fecha" => "$fecha", "cliente_id" => "$cliente_id");
                 $cotizacionId = $this->cotizacionModel->newCotizacion($cotiza);
                     $itemsCarrito = json_decode($this->carrito->load(), 1);
+                    /*print_r($itemsCarrito);
+                    die();*/
                     foreach ($itemsCarrito as $itemsCarrito) {
                         $cantidad = $itemsCarrito['cantidad'];
-                        $producto_id = $itemsCarrito['id'];
-                        $detalle = array("cantidad"=>"$cantidad","producto_id"=>"$producto_id","cotizacion_id"=>"$cotizacionId");
+                        $id = $this->prdtsistemasModel->getById($itemsCarrito['id'], $itemsCarrito['idFiltro'], $itemsCarrito['filtro']);
+                        $id = $id[0]->idProducto;
+                        $detalle = array("cantidad"=>"$cantidad","producto_id"=>"$id","cotizacion_id"=>"$cotizacionId");
                         $this->detallecoModel->newDetalleco($detalle);
                     }
                     $this->carrito->sessionOff();
-                    header('Location: ?controller=producto');
-                //header('Location: ?controller=detalleco&method=save&cotizacionId=' . $lastId);
+                header('Location: ?controller=producto&method=cart&cotizacionId=' . $cotizacionId);
             }
         } catch (Exception $e) {
             die($e->getMessage());

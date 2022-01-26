@@ -2,6 +2,8 @@
 
 include_once 'carrito.php';
 require 'models/producto.php';
+require 'models/medida.php';
+require 'models/voltaje.php';
 
     class carritoController {
 
@@ -20,20 +22,25 @@ require 'models/producto.php';
         {
             $this->carrito = new Carrito();
             $this->productoModel = new Producto();
+            $this->medidasModel = new Medida();
+            $this->voltajeModel = new Voltaje();
         }
 
         public function add() {
-            /*print_r("hols");
-            die();*/
             if(isset($_POST['id'])) {
-                $carrito = new Carrito();
-                $quantity = $_POST['quantity'];
-                //intval($quantity);
-                /*print_r($quantity);
-                die();*/
-                $responsive = $carrito->addItem($_POST['id'], $quantity);
-                /*print("Hola".$responsive);
-                die();*/
+                if(isset($_POST['medidas'])) {
+                    $medida = $this->medidasModel->getById($_POST['medidas']);
+                    $carrito = new Carrito();
+                    $responsive = $carrito->addItem($_POST['id'], $_POST['quantity'], 1, $_POST['medidas'], $medida[1]);
+                }else if(isset($_POST['voltaje'])) {
+                    $voltaje = $this->voltajeModel->getById($_POST['voltaje']);
+                    $carrito = new Carrito();
+                    $responsive = $carrito->addItem($_POST['id'], $_POST['quantity'], 2, $_POST['voltaje'], $voltaje[1]);
+                } else {
+                    $carrito = new Carrito();
+                    $responsive = $carrito->addItem($_POST['id'], $_POST['quantity'], "", "", "");
+                }
+
                 header("Location: " . $_SERVER["HTTP_REFERER"]);
             } else {
                 print_r("hols");
@@ -51,6 +58,8 @@ require 'models/producto.php';
                 $httpRequest = $this->productoModel->getByIdCart($itemCarrito['id']);
                 $itemProducto = json_decode($httpRequest, 1)['item'];
                 $itemProducto['cantidad'] = $itemCarrito['cantidad'];
+                $itemProducto['idFiltro'] = $itemCarrito['idFiltro'];
+                $itemProducto['nfiltro'] = $itemCarrito['nfiltro'];
                 $totalItems += $itemProducto['cantidad'];
                 array_push($fullItems, $itemProducto);
             }

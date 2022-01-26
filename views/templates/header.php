@@ -32,6 +32,7 @@ $marcas = $marcaModel->getAll();
 
 
     <link rel="stylesheet" href="assets/css/ea92915d6480870b41e84eda217fd24a7831739103.css">
+    <!--<link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
     <script type="text/javascript">
         WebFontConfig = {
             google: {
@@ -89,7 +90,7 @@ $marcas = $marcaModel->getAll();
                     <button class="mobile-menu-toggler text-primary mr-2" type="button">
                         <i class="icon-menu"></i>
                     </button>
-                    <a href="https://sistemasnuruena.com.co" class="logo">
+                    <a href="?contoller=cotizacion&method=admin" class="logo">
                         <img src="assets/images/logo.png" alt="Logo Nurueña">
                     </a>
                 </div>
@@ -115,7 +116,7 @@ $marcas = $marcaModel->getAll();
 
                     <div class="dropdown cart-dropdown">
                         <a href="#" class="dropdown-toggle dropdown-arrow btn-carrito" role="Button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="">
-                            <i class="far fa-clipboard"></i>
+                        <i class="fas fa-shopping-cart"></i>
                             <span class="cart-count badge-circle"></span>
                         </a>
 

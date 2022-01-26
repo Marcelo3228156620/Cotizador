@@ -42,32 +42,39 @@ class Carrito extends Session {
         return $this->getValue();
     }
 
-    public function addItem($id, $quantity) {
-        /*intval($quantity);
-        print(gettype($quantity));
-        die();*/
+    public function addItem($id, $quantity, $Filtro, $idFiltro, $nombre) {
+        
         if($this->getValue() == NULL) {
             $items = [];
         } else {
             $items = json_decode($this->getValue(), 1);
-
             for($i=0; $i<sizeof($items); $i++) {
-                if($items[$i]['id'] == $id) {
-                    $items[$i]['cantidad']+=intval($quantity);
-
-                    $this->setValue(json_encode($items));
-
-                    return $this->getValue();
+                if($idFiltro == "") {
+                    if($items[$i]['id'] == $id) {
+                        $items[$i]['cantidad']+=intval($quantity);
+    
+                        $this->setValue(json_encode($items));
+    
+                        return $this->getValue();
+                    }
+                }else {
+                    if($items[$i]['id'] == $id && $items[$i]['idFiltro'] == $idFiltro) {
+                        $items[$i]['cantidad']+=intval($quantity);
+    
+                        $this->setValue(json_encode($items));
+    
+                        return $this->getValue();
+                    }
                 }
             }
         }
 
+
         //operaciones cuando el carrito tiene un nuevo elemento
-        $item = ['id' => (int)$id, 'cantidad' => $quantity];
+        $item = ['id' => (int)$id, 'cantidad' => $quantity, 'idFiltro' => (int)$idFiltro, 'nfiltro' => $nombre, 'filtro' => $Filtro];
 
         array_push($items, $item);
-        /*print_r($items);
-        die();*/
+
         $this->setValue(json_encode($items));
 
         return $this->getValue();

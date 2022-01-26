@@ -145,19 +145,12 @@
 												<img src="<?php echo $producto->ubicacion ?>" alt="<?php echo $producto->producto ?>">
 											</div>
 										</a>
-										<!--<div class="label-group">
-											<div class="product-label label-hot">HOT</div>
-										</div>
-										<div class="btn-icon-group">
-											<button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-shopping-cart"></i></button>
-										</div>
-										<a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a> -->
 									</figure>
 									<div class="product-details">
 										<input type="hidden" id="<?php echo $producto->idProducto ?>" class="btnAddCart" value="">
 										<!--<div class="category-wrap">-->
 										<div class="category-list">
-											<a href="#" class="product-category"><?php echo $producto->producto ?></a>
+											<a href="?controller=producto&method=productsBy&a=m&id=<?php echo $producto->marca_id ?>&pag=1" class="product-category"><?php echo $producto->producto ?></a>
 										</div>
 										<!--<a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>-->
 										<!--</div>-->
@@ -168,7 +161,8 @@
 											<p>Referencia <?php echo $producto->codigo ?></p>
 										</h3>
 										<div class="product-action">
-											<button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal" onclick="nueva(<?php echo $producto->idProducto ?>)" id="btnAdd">Cotizar</button>
+											<!--<button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal" onclick="nueva(<?php echo $producto->idProducto ?>)" id="btnAdd">Cotizar</button>-->
+											<a href="?controller=producto&method=productView&id=<?php echo $producto->idProducto ?>" class="btn-icon btn-add-cart btn-quickview-product">Cotizar</a>
 										</div>
 									</div><!-- End .product-details -->
 								</div>

@@ -79,7 +79,7 @@
                 FROM detalle_cotizacion AS dc
                 INNER JOIN cotizacion AS c
                 ON dc.cotizacion_id = c.idCotizacion
-                INNER JOIN producto AS p
+                INNER JOIN productosistema AS p
                 ON dc.producto_id = p.idProducto
                 INNER JOIN cliente AS cl
                 ON c.cliente_id = cl.idCliente

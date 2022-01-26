@@ -169,9 +169,9 @@
                 ON m.idMarca = e.marca_id WHERE e.nombre LIKE '%$search%' OR e.codigo LIKE '%$search%' LIMIT $ini,12";
                 return $this->pdo->select($strSql);
             } else {
-                $strSql = "SELECT e.*, m.nombre AS producto, MATCH (e.nombre, e.codigo) AGAINST ( '$search' ) FROM producto AS e
+                $strSql = "SELECT e.*, m.nombre AS producto, MATCH (e.nombre) AGAINST ( '$search' ) FROM producto AS e
                 INNER JOIN marca AS m
-                ON m.idMarca = e.marca_id WHERE MATCH (e.nombre, e.codigo) AGAINST ( '$search' )";
+                ON m.idMarca = e.marca_id WHERE MATCH (e.nombre) AGAINST ( '$search' )";
                 return $this->pdo->select($strSql);
             }
         }
@@ -184,9 +184,9 @@
                 ON m.idMarca = e.marca_id WHERE e.nombre LIKE '%$search%' OR e.codigo LIKE '%$search%' AND categoria_id LIKE '%$cat%' LIMIT $ini,12";
                 return $this->pdo->select($strSql);
             } else {
-                $strSql = "SELECT e.*, m.nombre AS producto, MATCH (e.nombre, e.codigo) AGAINST ( '$search' ) FROM producto AS e
+                $strSql = "SELECT e.*, m.nombre AS producto, MATCH (e.nombre) AGAINST ( '$search' ) FROM producto AS e
                 INNER JOIN marca AS m
-                ON m.idMarca = e.marca_id WHERE MATCH (e.nombre, e.codigo) AGAINST ( '$search' ) AND categoria_id LIKE '%$cat%' LIMIT $ini,12";
+                ON m.idMarca = e.marca_id WHERE MATCH (e.nombre) AGAINST ( '$search' ) AND categoria_id LIKE '%$cat%' LIMIT $ini,12";
                 return $this->pdo->select($strSql);
             }
         }
@@ -199,7 +199,7 @@
                 $paginas = $filas['filas'] / 12;
                 return ceil($paginas);
             } else {
-                $strSql = "SELECT count(*) AS filas FROM producto WHERE MATCH (nombre, codigo) AGAINST ( '$search' )";
+                $strSql = "SELECT count(*) AS filas FROM producto WHERE MATCH (nombre) AGAINST ( '$search' )";
                 $filas = $this->pdo->selectfetch($strSql);
                 $paginas = $filas['filas'] / 12;
                 return ceil($paginas);
@@ -214,10 +214,41 @@
                 $paginas = $filas['filas'] / 12;
                 return ceil($paginas);
             } else {
-                $strSql = "SELECT count(*) AS filas, MATCH (nombre, codigo) AGAINST ( '$search' ) FROM producto WHERE MATCH (nombre, codigo) AGAINST ( '$search' ) AND categoria_id LIKE '%$cat%'";
+                $strSql = "SELECT count(*) AS filas, MATCH (nombre) AGAINST ( '$search' ) FROM producto WHERE MATCH (nombre) AGAINST ( '$search' ) AND categoria_id LIKE '%$cat%'";
                 $filas = $this->pdo->selectfetch($strSql);
                 $paginas = $filas['filas'] / 12;
                 return ceil($paginas);
+            }
+        }
+
+        public function filtros($id, $filtro)
+        {
+            try {
+                $strSql = "";
+                switch ($filtro) {
+                    case 'medidas':
+                        $strSql = "SELECT m.* FROM medidas AS m 
+                        INNER JOIN producto_medida AS pm 
+                        ON m.idMedida = pm.medida_id 
+                        WHERE pm.producto_id =:id";
+                        break;
+                    case 'color':
+                        $strSql = "SELECT c.* FROM colores AS c 
+                        INNER JOIN producto_color AS pc 
+                        ON c.idColor = pc.color_id
+                        WHERE pc.producto_id =:id";
+                        break;
+                    case 'voltaje':
+                        $strSql = "SELECT v.* FROM voltajes AS v 
+                        INNER JOIN producto_voltaje AS pv 
+                        ON v.idVoltaje = pv.voltaje_id 
+                        WHERE pv.producto_id =:id";
+                        break;
+                }
+                $arrayData = ['id' => $id];
+                return $this->pdo->select($strSql, $arrayData);
+            } catch (PDOException $e) {
+                die($e->getMessage());
             }
         }
 

@@ -6,7 +6,10 @@ class Session{
 
     public function __construct($session_name)
     {
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
 
         if(!isset($_SESSION[$session_name])) {
             $_SESSION[$session_name] = NULL;

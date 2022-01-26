@@ -27,7 +27,6 @@ class productoController
         $this->subcategoria = new Subcategoria;
         $this->marcaModel = new Marca;
         $this->filtroModel = new filtro;
-
     }
 
     public function Index()
@@ -149,8 +148,8 @@ class productoController
                 }
             }
         } else {
-            print("hola");
-        die();
+            print("holaS");
+            die();
         }
     }
 
@@ -200,10 +199,32 @@ class productoController
         if(isset($_GET['id'])) {
             $id = $_GET['id'];
             $product = $this->productoModel->getById($id);
-            /*print_r($product);
-            die();*/
+            
+            if($product[0]->medidas != null) {
+                $medidas = $this->productoModel->filtros($id, 'medidas');
+            }
+            if ($product[0]->voltaje != null) {
+                $voltajes = $this->productoModel->filtros($id, 'voltaje');
+            }
             $productos = $this->productoModel->productLim($product[0]->marca_id);
             require 'views/product.php';
+        }
+    }
+
+    public function productView()
+    {
+        if(isset($_REQUEST['id'])){
+            $id = $_REQUEST['id'];
+            $product = $this->productoModel->getById($id);
+            if($product[0]->medidas != null) {
+                $medidas = $this->productoModel->filtros($id, 'medidas');
+            }
+            if ($product[0]->voltaje != null) {
+                $voltajes = $this->productoModel->filtros($id, 'voltaje');
+            }
+            require 'views/ajax/product-quick-view.php';
+        } else {
+            require 'views/cart.php';
         }
     }
 
@@ -230,6 +251,7 @@ class productoController
             $http = $this->productoModel->getById($itemsCarrito['id']);
             foreach ($http as $res) {
                 $res->cantidad = $itemsCarrito['cantidad'];
+                $res->nfiltro = $itemsCarrito['nfiltro'];
             }
             array_push($carrito, $http);
         }

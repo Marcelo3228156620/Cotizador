@@ -29,8 +29,6 @@
 
         public function save()
         {
-            print("hoa");
-            die();
             try {
                 if(isset($_REQUEST['cotizacionId'])) {
                     $cotizacionId = $_REQUEST['cotizacionId'];

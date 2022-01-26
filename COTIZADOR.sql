@@ -14,14 +14,16 @@ CREATE TABLE producto (
 	idProducto INT(12) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     codigo VARCHAR(20) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
-    referenciaProveedor VARCHAR(45) NOT NULL,
     marca_id INT(12) NULL,
     imagen VARCHAR(45) NOT NULL,
     ubicacion VARCHAR(100) NOT NULL,
     subcategoria_id INT(12) NULL,
 	categoria_id INT(12) NULL,
 	filtroUno_id INT(12) NULL,
-	estado VARCHAR(45) NOT NULL
+	estado VARCHAR(45) NOT NULL,
+	medida VARCHAR(10) NULL,
+	voltaje VARCHAR(10) NULL,
+	filtro INT(12) NULL
 );
 
 CREATE TABLE categoria (
@@ -78,6 +80,91 @@ CREATE TABLE manuales (
 	marca_id INT(12) NULL
 );
 
+CREATE TABLE medidas (
+  idMedida int(12) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  medida varchar(20) NOT NULL
+);
+
+CREATE TABLE voltajes (
+  idVoltaje int(12) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  voltaje varchar(20) NOT NULL
+);
+
+CREATE TABLE producto_medida (
+  producto_id int(12) NOT NULL,
+  medida_id int(12) NOT NULL
+);
+
+CREATE TABLE producto_voltaje (
+  producto_id int(12) NOT NULL,
+  voltaje_id int(12) NOT NULL
+);
+
+ALTER TABLE producto_medida
+  ADD KEY fk_productoMedida (producto_id),
+  ADD KEY fk_medidaProducto (medida_id);
+
+ALTER TABLE producto_voltaje
+  ADD KEY fk_productoVoltaje (producto_id),
+  ADD KEY fk_voltajeProducto (voltaje_id);
+
+ALTER TABLE 
+	producto_color
+ADD CONSTRAINT 
+	fk_colorProducto 
+FOREIGN KEY 
+	(color_id) 
+REFERENCES
+	colores(idColor) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE,
+ADD CONSTRAINT 
+	fk_productoColor 
+FOREIGN KEY 
+	(producto_id) 
+REFERENCES 
+	producto (idProducto) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE;
+
+ALTER TABLE 
+	producto_medida
+ADD CONSTRAINT 
+	fk_medidaProducto 
+FOREIGN KEY 
+	(medida_id) 
+REFERENCES 
+	medidas(idMedida) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE,
+ADD CONSTRAINT 
+	fk_productoMedida 
+FOREIGN KEY 
+	(producto_id) 
+REFERENCES 
+	producto(idProducto) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE;
+
+ALTER TABLE 
+	producto_voltaje
+ADD CONSTRAINT 
+	fk_productoVoltaje 
+FOREIGN KEY 
+	(producto_id) 
+REFERENCES 
+	producto(idProducto) 
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+ADD CONSTRAINT 
+	fk_voltajeProducto 
+FOREIGN KEY 
+	(voltaje_id) 
+REFERENCES 
+	voltajes(idVoltaje) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE;
+
 ALTER TABLE
 	manuales
 ADD CONSTRAINT
@@ -129,7 +216,7 @@ ADD CONSTRAINT
 FOREIGN KEY 
 	(producto_id)
 REFERENCES
-	producto(idProducto)
+	productosistema(idProducto)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
 
@@ -189,4 +276,46 @@ ON UPDATE CASCADE
 ON DELETE CASCADE;
 
 ALTER TABLE producto ADD FULLTEXT(nombre);
-ALTER TABLE producto ADD FULLTEXT(codigo);
+
+
+CREATE TABLE productoSistema (
+	idProducto INT(12) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    codigo VARCHAR(20) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+	medida_id INT(12) NULL,
+	voltaje_id INT(12) NULL,
+	producto_id INT(12) NULL
+);
+
+ALTER TABLE
+	productoSistema 
+ADD CONSTRAINT
+	fk_medidaProductoSistema
+FOREIGN KEY
+	(medida_id)
+REFERENCES
+	medidas(idMedida)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE
+	productoSistema 
+ADD CONSTRAINT
+	fk_productoProductoSistema
+FOREIGN KEY
+	(producto_id)
+REFERENCES
+	producto(idProducto)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE
+	productoSistema 
+ADD CONSTRAINT
+	fk_voltajeProductoSistema
+FOREIGN KEY
+	(voltaje_id)
+REFERENCES
+	voltajes(idVoltaje)
+ON UPDATE CASCADE
+ON DELETE CASCADE;

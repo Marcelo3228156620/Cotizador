@@ -82,11 +82,11 @@
                                 <div class="product-desc">
                                     <p></p>
                                 </div><!-- End .product-desc -->
-
+                                <form action="?controller=carrito&method=add" method="POST">
                                 <div class="product-filters-container">
-                                    <!--<div class="product-single-filter">
-                                        <label>Color:</label>-->
-                                        <!--<ul class="config-swatch-list">
+                                    <div class="product-single-filter">
+                                        <!--<label>Color:</label>
+                                        <ul class="config-swatch-list">
                                             <li class="active">
                                                 <a href="#" style="background-color: #0188cc;"></a>
                                             </li>
@@ -100,17 +100,26 @@
                                                 <a href="#" style="background-color: #6085a5;"></a>
                                             </li>
                                         </ul>-->
-                                        <!--<div class="select-custom">-->
-                                        <!--<select class="form-control" name="" id="">
+                                        <!--<div class="select-custom">
+                                        <select class="form-control" name="" id="">
                                             <option value="">Red</option>
                                             <option value="">Blue</option>
                                             <option value="">Yellow</option>
-                                        </select>-->
-                                        <!--</div>-->
-                                    <!--</div>--><!-- End .product-single-filter -->
-
-                                    <!--<div class="product-single-filter">
-                                        <label>Voltaje:</label>-->
+                                        </select>
+                                        </div>-->
+                                    </div><!-- End .product-single-filter -->
+                                    <div class="product-single-filter">
+                                        <!--<div class="form-group">
+                                            <label for="">Prueba</label>
+                                            <div class="select-custom">
+                                                <select name="" id="" class="form-control">
+                                                <option value="">Seleccione...</option>
+                                                <option value="">Schale</option>
+                                                <option value="">Prueba</option>
+                                                </select>
+                                            </div>
+                                        </div>-->
+                                        <!--<label>Prueba:</label>-->
                                         <!--<ul class="config-size-list">
                                             <li class="active"><a href="#">S</a></li>
                                             <li><a href="#">M</a></li>
@@ -118,21 +127,61 @@
                                             <li><a href="#">XL</a></li>
                                         </ul>-->
                                         <!--<select name="" id="" class="form-control">
-                                            <option value="">220V</option>
-                                            <option value="">127V</option>
+                                            <option value="" selected>Seleccione...</option>
+                                            <option value="">Schale</option>
+                                            <option value="">Prueba</option>
+                                        </select>-->
+                                    </div><!-- End .product-single-filter -->
+                                    <?php if(isset($voltajes)) : ?>
+                                    <div class="product-single-filter">
+                                        <label>Voltaje:</label>
+                                        <!--<ul class="config-size-list">
+                                            <li class="active"><a href="#">S</a></li>
+                                            <li><a href="#">M</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">XL</a></li>
+                                        </ul>-->
+                                        <select name="voltaje" id="voltaje" class="form-control">
+                                            <option value="0">Seleccione...</option>
+                                            <?php 
+                                                foreach ($voltajes as $voltaje) {
+                                                    echo '<option value="'.$voltaje->idVoltaje.'">'.$voltaje->voltaje.'</option>';
+                                                }
+                                            ?>
                                         </select>
-                                    </div>--><!-- End .product-single-filter -->
+                                    </div><!-- End .product-single-filter -->
+                                    <?php else : ?>
+                                    <?php endif ?>
+                                    <?php if(isset($medidas)) : ?>
+                                    <div class="product-single-filter">
+                                        <label>Medidas:</label>
+                                        <!--<ul class="config-size-list">
+                                            <li class="active"><a href="#">S</a></li>
+                                            <li><a href="#">M</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">XL</a></li>
+                                        </ul>-->
+                                        <select name="medidas" id="medidas" class="form-control">
+                                            <option value="0">Seleccione...</option>
+                                            <?php 
+                                                foreach ($medidas as $medida) {
+                                                    echo '<option value="'.$medida->idMedida.'">'.$medida->medida.'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div><!-- End .product-single-filter -->
+                                    <?php else : ?>
+                                    <?php endif ?>
                                 </div><!-- End .product-filters-container -->
 
                                 <hr class="divider">
-                                <form action="?controller=carrito&method=add" method="POST">
                                     <div class="product-action">
                                         <div class="product-single-qty">
                                             <input class="horizontal-quantity form-control" type="text" name="quantity" id="quantity">
                                         </div><!-- End .product-single-qty -->
                                         <input type="hidden" value="<?php echo $product[0]->idProducto ?>" name="id">
                                         <!--<a href="?controller=carrito&method=add&id=$_POST['quantity']" class="btn btn-danger add-cart" title="Cotizar">Cotizar</a>-->
-                                        <button class="btn btn-danger add-cart">Cotizar</button>
+                                        <button class="btn btn-danger add-cart" id="btn-submit" disabled>Cotizar</button>
                                     </div><!-- End .product-action -->
                                 </form>
 
@@ -588,25 +637,24 @@
                     <?php foreach ($productos as $producto) : ?>
                         <div class="product-default">
                             <figure>
-                                <a href="#">
+                                <a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>">
                                     <img src="<?php echo $producto->ubicacion ?>" alt="">
                                 </a>
                             </figure>
                             <div class="product-details">
                                 <input type="hidden" id="<?php echo $producto->idProducto ?>">
                                 <div class="category-list">
-                                    <a href=""><?php echo $producto->producto ?></a>
+                                    <a href="?controller=producto&method=productsBy&a=m&id=<?php echo $producto->marca_id ?>&pag=1"><?php echo $producto->producto ?></a>
                                 </div>
                                 <h3 class="product-title">
-                                    <a href=""><?php echo $producto->nombre ?></a>
+                                    <a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>"><?php echo $producto->nombre ?></a>
                                 </h3>
                                 <h3 class="product-title">
-                                    <p>Ref Fabrica. <?php echo $producto->referenciaProveedor ?></p>
+                                    <p><?php echo $producto->codigo ?></p>
                                 </h3>
                                 <!-- End .price-box -->
                                 <div class="product-action">
-                                    <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal" onclick="nueva(<?php echo $producto->idProducto ?>)" id="btnAdd">Cotizar</button>
-                                    <a href="ajax/product-quick-view1.html" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="?controller=producto&method=productView&id=<?php echo $producto->idProducto ?>" class="btn-icon btn-add-cart btn-quickview-product">Cotizar</a>
                                 </div>
                             </div>
                         </div>

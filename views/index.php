@@ -152,7 +152,7 @@
                                     <p>Referencia <?php echo $producto->codigo ?></p>
                                 </h3>
                                 <div class="product-action">
-                                    <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal" onclick="nueva(<?php echo $producto->idProducto ?>)" id="btnAdd">Cotizar</button>
+                                    <a href="?controller=producto&method=productView&id=<?php echo $producto->idProducto ?>" class="btn-icon btn-add-cart btn-quickview-product">Cotizar</a>
                                 </div>
                             </div><!-- End .product-details -->
                         </div>
