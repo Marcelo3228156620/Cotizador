@@ -14,7 +14,7 @@
         <div class="container">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="?controller=producto"><i class="icon-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="#">producto</a></li>
                 </ol>
             </nav>
@@ -648,9 +648,6 @@
                                 </div>
                                 <h3 class="product-title">
                                     <a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>"><?php echo $producto->nombre ?></a>
-                                </h3>
-                                <h3 class="product-title">
-                                    <p><?php echo $producto->codigo ?></p>
                                 </h3>
                                 <!-- End .price-box -->
                                 <div class="product-action">

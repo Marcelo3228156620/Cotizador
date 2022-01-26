@@ -18,7 +18,6 @@
             $this->detallecoModel = new Detalleco;
             $this->carrito = new Carrito;
             $this->spreadsheet = new Spreadsheet();
-            //$this->spreadsheet = new Spreadsheet();
         }
 
         public function Index()

@@ -292,27 +292,7 @@
         </div>
     </div>
 
-    <!--<div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(assets/images/newsletter_popup_bg.jpg)">
-		<div class="newsletter-popup-content">
-			<img src="assets/images/logo-black.png" alt="Logo" class="logo-newsletter">
-			<h2>BE THE FIRST TO KNOW</h2>
-			<p>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</p>
-			<form action="#">
-				<div class="input-group">
-					<input type="email" class="form-control" id="newsletter-email" name="newsletter-email" placeholder="Email address" required>
-					<input type="submit" class="btn" value="Go!">
-				</div>--><!-- End .from-group -->
-			<!--</form>
-			<div class="newsletter-subscribe">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="1">
-						Don't show this popup again
-					</label>
-				</div>
-			</div>-->
-		<!--</div>--><!-- End .newsletter-popup-content -->
-	<!--</div>--><!-- End .newsletter-popup -->
+    
 
     <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModal" aria-hidden="true">
 	  <div class="modal-dialog" role="document">

@@ -166,7 +166,7 @@
             if($bool) {
                 $strSql = "SELECT e.*, m.nombre AS producto FROM producto AS e
                 INNER JOIN marca AS m
-                ON m.idMarca = e.marca_id WHERE e.nombre LIKE '%$search%' OR e.codigo LIKE '%$search%' LIMIT $ini,12";
+                ON m.idMarca = e.marca_id WHERE e.nombre LIKE '%$search%' LIMIT $ini,12";
                 return $this->pdo->select($strSql);
             } else {
                 $strSql = "SELECT e.*, m.nombre AS producto, MATCH (e.nombre) AGAINST ( '$search' ) FROM producto AS e
@@ -181,7 +181,7 @@
             if($bool) {
                 $strSql = "SELECT e.*, m.nombre AS producto FROM producto AS e
                 INNER JOIN marca AS m
-                ON m.idMarca = e.marca_id WHERE e.nombre LIKE '%$search%' OR e.codigo LIKE '%$search%' AND categoria_id LIKE '%$cat%' LIMIT $ini,12";
+                ON m.idMarca = e.marca_id WHERE e.nombre LIKE '%$search%' AND categoria_id LIKE '%$cat%' LIMIT $ini,12";
                 return $this->pdo->select($strSql);
             } else {
                 $strSql = "SELECT e.*, m.nombre AS producto, MATCH (e.nombre) AGAINST ( '$search' ) FROM producto AS e

@@ -157,9 +157,9 @@
 										<h6 class="product-title">
 											<a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>"><?php echo $producto->nombre ?></a>
 										</h6>
-										<h3 class="product-title">
+										<!--<h3 class="product-title">
 											<p>Referencia <?php echo $producto->codigo ?></p>
-										</h3>
+										</h3>-->
 										<div class="product-action">
 											<!--<button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal" onclick="nueva(<?php echo $producto->idProducto ?>)" id="btnAdd">Cotizar</button>-->
 											<a href="?controller=producto&method=productView&id=<?php echo $producto->idProducto ?>" class="btn-icon btn-add-cart btn-quickview-product">Cotizar</a>

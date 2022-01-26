@@ -45,13 +45,13 @@
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div class="header-left header-dropdowns ml-0 ml-sm-auto w-sm-100">
+                <div class="header-right header-dropdowns ml-0 w-sm-100">
                     <div class="header-dropdown dropdown-expanded d-none d-lg-block">
                         <div class="header-menu">
                             <ul>
-                                <li><a href="">MI Menu</a></li>
-                                <li><a href="">MI Menu</a></li>
-                                <li><a href="">MI Menu</a></li>
+                                <li><a href="#">Productos</a></li>
+                                <li><a href="#">producto_Medida</a></li>
+                                <li><a href="#">Producto_Voltaje</a></li>
                             </ul>
                         </div>
                     </div>

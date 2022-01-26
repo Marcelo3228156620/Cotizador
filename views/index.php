@@ -148,9 +148,9 @@
                                 <h3 class="product-title">
                                     <a href="?controller=producto&method=viewProduct&id=<?php echo $producto->idProducto ?>"><?php echo $producto->nombre ?></a>
                                 </h3>
-                                <h3 class="product-title">
-                                    <p>Referencia <?php echo $producto->codigo ?></p>
-                                </h3>
+                                <!--<h3 class="product-title">
+                                    <p></p>
+                                </h3>-->
                                 <div class="product-action">
                                     <a href="?controller=producto&method=productView&id=<?php echo $producto->idProducto ?>" class="btn-icon btn-add-cart btn-quickview-product">Cotizar</a>
                                 </div>
@@ -953,6 +953,27 @@
                 <!--</div>
         </section>-->
     </main><!-- End .main -->
+    <div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(assets/images/newsletter_popup_bg.jpg)">
+		<div class="newsletter-popup-content">
+			<img src="assets/images/logo.png" alt="Logo" class="logo-newsletter">
+			<h2>Ahora puedes cotizar</h2>
+			<p>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</p>
+			<form action="#">
+				<div class="input-group">
+					<input type="email" class="form-control" id="newsletter-email" name="newsletter-email" placeholder="Email address" required>
+					<input type="submit" class="btn" value="Go!">
+				</div><!-- End .from-group -->
+			</form>
+			<div class="newsletter-subscribe">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="1">
+						Don't show this popup again
+					</label>
+				</div>
+			</div>
+		</div><!-- End .newsletter-popup-content -->
+	</div><!-- End .newsletter-popup -->
     <?php require 'templates/footer.php'; ?>
 </body>
 
